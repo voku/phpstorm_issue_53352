@@ -52,7 +52,7 @@ class ActiveRow
     }
     
     /**
-     * Gibt den wert des ID-feldes zurück
+     * Get the primary id value from the database.
      *
      * @return int
      */
