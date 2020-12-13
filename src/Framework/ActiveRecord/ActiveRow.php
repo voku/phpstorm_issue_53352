@@ -32,4 +32,22 @@ class ActiveRow
             $this->{$key} = $value;
         }
     }
+    
+    /**
+     * @return mixed|static
+     *                      <p>
+     *                      We fake the return "static" here, because we want auto-completion for the current properties.
+     *                      <br><br>
+     *                      But here the properties contains only the name from the property itself:
+     *                      <br>
+     *                      <code>
+     *                      $a = ActiveRow->name = "foo";
+     *                      $m = $a->m();
+     *                      echo $m->name; // "name"
+     *                      </code>
+     *                      </p>
+     */
+    public function m() {
+        return (new ActiveRowMeta())->getMetaObject($this);
+    }
 }
