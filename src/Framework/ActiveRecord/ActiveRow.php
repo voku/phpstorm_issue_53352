@@ -50,4 +50,13 @@ class ActiveRow
     public function m() {
         return (new ActiveRowMeta())->getMetaObject($this);
     }
+    
+    /**
+     * Gibt den wert des ID-feldes zurück
+     *
+     * @return int
+     */
+    public function getId() {
+        return $this->factory->getIdValue($this);
+    }
 }
