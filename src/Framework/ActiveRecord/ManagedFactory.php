@@ -175,6 +175,37 @@ class ManagedFactory extends Factory
     {
         return $this->pk;
     }
+    
+    /**
+     * @return string
+     */
+    public function getPrimaryKeyFieldName() {
+        // DEBUG
+        /*
+        if (!isset($this->fields[$this->pk])) {
+            print_r($this->pk);
+            print_r($this->fields);
+        }
+         */
+
+        $fieldname = $this->fields[$this->pk];
+
+        return $fieldname;
+    }
+
+    /**
+     * @param ActiveRow $activeRow
+     *
+     * @return int
+     *
+     * @phpstan-param T $activeRow
+     */
+    public function getIdValue($activeRow) {
+        $fieldname = $this->getPrimaryKeyFieldName();
+
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return $activeRow->{$fieldname};
+    }
 
     /**
      * @param null|string $alias
